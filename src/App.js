@@ -1,14 +1,20 @@
 import React, {useState} from 'react';
 
 function App() {
-    const state = useState(0)
-    console.log(state)
-    // let likes = 0;
+    let [likes, setLikes] = useState(5)
+
+    function increment () {
+        setLikes(likes + 1);
+    }
+    function decrement () {
+        setLikes(likes - 1);
+    }
+
     return (
         <div className="App">
-            {/*<h1>{likes}</h1>*/}
-            {/*<button onClick={() => likes += 1}>Increment</button>*/}
-            {/*<button onClick={() => likes -= 1}>Decrement</button>*/}
+            <h1>{likes}</h1>
+            <button onClick={decrement}>Decrement</button>
+            <button onClick={increment}>Increment</button>
         </div>
     );
 }
