@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 
 function App() {
-    let [likes, setLikes] = useState(5)
-    const [value, setValue] = useState('Text in input')
+    let [likes, setLikes] = useState(5);
+    const [value, setValue] = useState('Text in input');
 
-    function increment () {
+    function increment() {
         setLikes(likes + 1);
     }
-    function decrement () {
+
+    function decrement() {
         setLikes(likes - 1);
     }
 
