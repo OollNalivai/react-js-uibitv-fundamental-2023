@@ -23,12 +23,24 @@ function App() {
         }
     ])
 
+    const [title, setTitle] = useState('123')
+
+    const addNewPost = (e) => {
+        e.preventDefault()
+        console.log(title)
+    }
+
     return (
         <div className="App">
             <form>
-                <MyInput type="text" placeholder={"Title post"}/>
-                <MyInput type="text" placeholder={"Text post"}/>
-                <MyButton>Create post</MyButton>
+                {/* Управляемый компонент*/}
+                <MyInput
+                    value={title}
+                    onChange={e => setTitle(e.target.values)}
+                    type="text"
+                    placeholder="Title post"/>
+                <MyInput type="text" placeholder="Text post"/>
+                <MyButton onClick={addNewPost}>Create post</MyButton>
             </form>
             <PostList posts={posts} title='Posts list'/>
         </div>
