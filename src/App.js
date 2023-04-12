@@ -21,14 +21,14 @@ function App() {
             title: 'JavaScript 3',
             body: 'JavaScript is a programming language 3'
         }
-    ])
+    ]);
 
-    const [title, setTitle] = useState('123')
+    const [title, setTitle] = useState('123123');
 
     const addNewPost = (e) => {
-        e.preventDefault()
-        console.log(title)
-    }
+        e.preventDefault();
+        console.log(title);
+    };
 
     return (
         <div className="App">
@@ -36,13 +36,13 @@ function App() {
                 {/* Управляемый компонент*/}
                 <MyInput
                     value={title}
-                    onChange={e => setTitle(e.target.values)}
+                    onChange={(e) => setTitle(e.target.values)}
                     type="text"
                     placeholder="Title post"/>
                 <MyInput type="text" placeholder="Text post"/>
                 <MyButton onClick={addNewPost}>Create post</MyButton>
             </form>
-            <PostList posts={posts} title='Posts list'/>
+            <PostList posts={posts} title="Posts list"/>
         </div>
     );
 }
