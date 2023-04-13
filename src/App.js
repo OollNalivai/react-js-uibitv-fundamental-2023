@@ -36,7 +36,7 @@ function App() {
                 {/* Управляемый компонент*/}
                 <MyInput
                     value={title}
-                    onChange={(e) => setTitle(e.target.values)}
+                    onChange={(e) => setTitle(e.target.value)}
                     type="text"
                     placeholder="Title post"/>
                 <MyInput type="text" placeholder="Text post"/>
