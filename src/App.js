@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import './styles/App.css';
 import PostList from './components/PostList';
 import MyButton from './components/UI/Button/MyButton';
 import MyInput from './components/UI/input/MyInput';
 
 function App() {
-    const [posts, setPosts] = useState([
+    const [posts] = useState([
         {
             id: 1,
             title: 'JavaScript',
@@ -23,26 +23,40 @@ function App() {
         }
     ]);
 
-    const [title, setTitle] = useState('123123');
+    const [title, setTitle] = useState('');
+
+    const bodyInputRef = useRef();
 
     const addNewPost = (e) => {
         e.preventDefault();
         console.log(title);
+        console.log(bodyInputRef.current.value);
+
     };
 
     return (
         <div className="App">
             <form>
                 {/* Управляемый компонент*/}
+
                 <MyInput
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     type="text"
                     placeholder="Title post"/>
-                <MyInput type="text" placeholder="Text post"/>
+
+                {/*Неуправляемый/неконтролируемый компонент*/}
+                <MyInput
+                    ref={bodyInputRef}
+                    type="text"
+                    placeholder="Text post"/>
+
                 <MyButton onClick={addNewPost}>Create post</MyButton>
+
             </form>
+
             <PostList posts={posts} title="Posts list"/>
+
         </div>
     );
 }
