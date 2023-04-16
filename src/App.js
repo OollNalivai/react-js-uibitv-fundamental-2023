@@ -1,11 +1,11 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import './styles/App.css';
 import PostList from './components/PostList';
 import MyButton from './components/UI/Button/MyButton';
 import MyInput from './components/UI/input/MyInput';
 
 function App() {
-    const [posts] = useState([
+    const [posts, setPosts] = useState([
         {
             id: 1,
             title: 'JavaScript',
@@ -24,14 +24,19 @@ function App() {
     ]);
 
     const [title, setTitle] = useState('');
-
-    const bodyInputRef = useRef();
+    const [body, setBody] = useState('');
 
     const addNewPost = (e) => {
         e.preventDefault();
-        console.log(title);
-        console.log(bodyInputRef.current.value);
-
+        const newPost = {
+            id: Date.now(),
+            title,
+            body
+        };
+        setPosts([...posts, newPost]);
+        console.log(newPost);
+        setTitle('')
+        setBody('')
     };
 
     return (
@@ -45,9 +50,9 @@ function App() {
                     type="text"
                     placeholder="Title post"/>
 
-                {/*Неуправляемый/неконтролируемый компонент*/}
                 <MyInput
-                    ref={bodyInputRef}
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
                     type="text"
                     placeholder="Text post"/>
 
