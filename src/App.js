@@ -23,17 +23,23 @@ function App() {
     ]);
 
     const createPost = (newPost) => {
-        setPosts([...posts, newPost])
-    }
+        setPosts([...posts, newPost]);
+    };
 
     const removePost = (post) => {
-        setPosts(posts.filter(p => p.id !== post.id))
-    }
+        setPosts(posts.filter(p => p.id !== post.id));
+    };
 
     return (
         <div className="App">
             <PostForm create={createPost}/>
-            <PostList remove={removePost} posts={posts} title="Posts list"/>
+            {posts.length !== 0
+                ?
+                <PostList remove={removePost} posts={posts} title="Posts list"/>
+                :
+                <h2 style={{textAlign: 'center'}}>Posts not found.</h2>
+            }
+
 
         </div>
     );
