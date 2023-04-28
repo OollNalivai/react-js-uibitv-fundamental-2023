@@ -23,6 +23,8 @@ function App() {
         }
     ]);
 
+    const [selectedSort, setSelectedSort] = useState('')
+
     const createPost = (newPost) => {
         setPosts([...posts, newPost]);
     };
@@ -31,16 +33,24 @@ function App() {
         setPosts(posts.filter(p => p.id !== post.id));
     };
 
+    const sortPosts = (sort) => {
+        setSelectedSort(sort)
+        console.log(sort)
+    }
+
     return (
         <div className="App">
             <PostForm create={createPost}/>
             <hr style={{margin: '15px 0'}}/>
             <div>
                 <MySelect
-                defaultValue="Сортировка"
-                options={[
-                    {value: 'title', name: 'subtitle'}
-                ]}/>
+                    value={selectedSort}
+                    onChange={sortPosts}
+                    defaultValue="Search"
+                    option={[
+                        {value: 'title', name: 'by name'},
+                        {value: 'body', name: 'by description'}
+                    ]}/>
             </div>
             {posts.length !== 0
                 ?
