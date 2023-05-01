@@ -9,7 +9,7 @@ function App() {
         {
             id: 1,
             title: 'JavaScript',
-            body: 'JavaScript is a programming language'
+            body: 'JavaScript is a programming language 4'
         },
         {
             id: 2,
@@ -23,7 +23,7 @@ function App() {
         }
     ]);
 
-    const [selectedSort, setSelectedSort] = useState('')
+    const [selectedSort, setSelectedSort] = useState('');
 
     const createPost = (newPost) => {
         setPosts([...posts, newPost]);
@@ -34,9 +34,10 @@ function App() {
     };
 
     const sortPosts = (sort) => {
-        setSelectedSort(sort)
-        console.log(sort)
-    }
+        setSelectedSort(sort);
+        setPosts([...posts].sort(
+            (a, b) => a[sort].localeCompare(b[sort])));
+    };
 
     return (
         <div className="App">
